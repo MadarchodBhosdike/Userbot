@@ -176,7 +176,7 @@ def info(bot: Bot, update: Update, args: List[str]):
     disaster_level_present = False
 
     if user.id in DEV_USERS:
-        text += tld(chat.id, "\n\nThe Disaster level of this person is 'God'")
+        text += "\n\nThe Disaster level of this person is 'God'."
         disaster_level_present = True
     elif user.id in SUDO_USERS:
         text += "\nThe Disaster level of this person is 'Dragon'."
