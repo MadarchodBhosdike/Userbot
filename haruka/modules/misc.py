@@ -172,9 +172,11 @@ def info(bot: Bot, update: Update, args: List[str]):
         text += tld(chat.id, "\nUsername: @{}").format(html.escape(user.username))
 
     text += tld(chat.id, "\nPermanent user link: {}").format(mention_html(user.id, "link"))
+    
+    disaster_level_present = False
 
     if user.id in DEV_USERS:
-        text += tld(chat.id, "\n\nThe Disaster level of this person is [God](https://t.me/c/1381616899/7820)")
+        text += tld(chat.id, "\n\nThe Disaster level of this person is 'God'")
         disaster_level_present = True
     elif user.id in SUDO_USERS:
         text += "\nThe Disaster level of this person is 'Dragon'."
