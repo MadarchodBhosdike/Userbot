@@ -175,19 +175,20 @@ def info(bot: Bot, update: Update, args: List[str]):
 
     if user.id in DEV_USERS:
         text += tld(chat.id, "\n\nThe Disaster level of this person is [God](https://t.me/c/1381616899/7820)")
-    else:
-        if user.id in SUDO_USERS:
-            text += tld(chat.id, "\nThis person is one of my sudo users! " \
-            "Nearly as powerful as my owner - so watch it.")
-        else:
-            if user.id in SUPPORT_USERS:
-                text += tld(chat.id, "\nThis person is one of my support users! " \
-                        "Not quite a sudo user, but can still gban you off the map.")
+        disaster_level_present = True
+    elif user.id in SUDO_USERS:
+        text += "\nThe Disaster level of this person is 'Dragon'."
+        disaster_level_present = True
+    elif user.id in SUPPORT_USERS:
+        text+= "\nThe Disaster level of this person is 'Demon'."
+        disaster_level_present = True
+    elif user.id in WHITELIST_USERS:
+        text += "\nThe Disaster level of this person is 'Wolf'."
+        disaster_level_present = True
 
-            if user.id in WHITELIST_USERS:
-                text += tld(chat.id, "\nThis person has been whitelisted! " \
-                        "That means I'm not allowed to ban/kick them.")
-
+    if disaster_level_present:
+        text += ' [<a href="https://t.me/LucySupportChat/26133">?</a>]'
+    
     for mod in USER_INFO:
         try:
             mod_info = mod.__user_info__(user.id).strip()
